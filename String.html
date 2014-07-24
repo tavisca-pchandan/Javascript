@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>String Operations using Javascript</title>
+    <link href="css/bootstrap.css" rel="Stylesheet" />
+    <link href="css/styles.css" rel="Stylesheet" />
+    <script src="js/bootstrap.js"></script>
+    <script src="js/custom-js.js"></script>
+   
+</head>
+<body>
+    <div class="container-fluid main-container">
+        <div class="row ">
+            <div class="container-fluid  center-block">
+                <div class="col-lg-4">
+                </div>
+                <div class="col-lg-2 center-block ">
+                    <div class="row center-block">
+                        <label>
+                            String 1</label>
+                    </div>
+                </div>
+                <div class="col-lg-2 center-block">
+                    <div class="row center-block">
+                        <label>
+                            String 2</label>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container-fluid">
+                <div class="col-lg-4">
+                </div>
+                <div class="col-lg-2 center-block">
+                    <div class="row">
+                        <input type="text" id="first-string" value="" />
+                    </div>
+                </div>
+                <div class="col-lg-2 center-block">
+                    <div class="row">
+                        <input type="text" id="second-string" value="" />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid main-container">
+        <div class="row function-container">
+            <div class="container-fluid">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-2">
+                    <div class="row">
+                        <input type="radio" name="string-operation" id="concat" onchange="concat()" />Concat
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="row">
+                        <input type="radio" name="string-operation" id="SubString" onchange="substring()" />SubString
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="row">
+                        <input type="radio" name="string-operation" id="length" onchange="length()" />Length
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="row">
+                        <input type="radio" name="string-operation" id="charat" onchange="charat()" />Char
+                        At
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="row">
+                        <input type="radio" name="string-operation" id="last-index-of" onchange="lastindexof()" />Last
+                        Index Of
+                    </div>
+                </div>
+                <div class="col-lg-1">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container-fluid">
+                <div class="col-lg-4">
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="container-fluid">
+                            <div class="col-lg-6">
+                                <label>
+                                    Result</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <label id="result-string">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
