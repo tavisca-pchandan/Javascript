@@ -163,6 +163,8 @@ function StringOperations(str1) {
 						str_arr[i] = source[k];
 						a = a + str_arr[i];
 						k++;
+						if (k == target.length)
+						    k = 0;
 						
 					}
 					else
