@@ -8,22 +8,16 @@
     <script src="js/custom-js.js"></script>
    
 </head>
-<body>
+<body onload="disableTextBoxes()">
     <div class="container-fluid main-container">
         <div class="row ">
             <div class="container-fluid  center-block">
                 <div class="col-lg-4">
                 </div>
-                <div class="col-lg-2 center-block ">
+                <div class="col-lg-4 center-block ">
                     <div class="row center-block">
                         <label>
                             String 1</label>
-                    </div>
-                </div>
-                <div class="col-lg-2 center-block">
-                    <div class="row center-block">
-                        <label>
-                            String 2</label>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -34,14 +28,9 @@
             <div class="container-fluid">
                 <div class="col-lg-4">
                 </div>
-                <div class="col-lg-2 center-block">
+                <div class="col-lg-4 center-block">
                     <div class="row">
                         <input type="text" id="first-string" value="" />
-                    </div>
-                </div>
-                <div class="col-lg-2 center-block">
-                    <div class="row">
-                        <input type="text" id="second-string" value="" />
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -52,39 +41,77 @@
     <div class="container-fluid main-container">
         <div class="row function-container">
             <div class="container-fluid">
-                <div class="col-lg-1">
-                </div>
+                
                 <div class="col-lg-2">
                     <div class="row">
-                        <input type="radio" name="string-operation" id="concat" onchange="concat()" />Concat
+                        <input type="radio" name="string-operation" id="concat" onchange="Invoker()" />Concat
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="row">
-                        <input type="radio" name="string-operation" id="SubString" onchange="substring()" />SubString
+                        <input type="radio" name="string-operation" id="SubString" onchange="Invoker()" />SubString
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="row">
-                        <input type="radio" name="string-operation" id="length" onchange="length()" />Length
+                        <input type="radio" name="string-operation" id="length" onchange="Invoker()" />Length
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="row">
-                        <input type="radio" name="string-operation" id="charat" onchange="charat()" />Char
+                        <input type="radio" name="string-operation" id="charat" onchange="Invoker()" />Char
                         At
                     </div>
                 </div>
-                <div class="col-lg-2">
+		<div class="col-lg-2">
                     <div class="row">
-                        <input type="radio" name="string-operation" id="last-index-of" onchange="lastindexof()" />Last
-                        Index Of
+                        <input type="radio" name="string-operation" id="index-of" onchange="Invoker()" />Index of
                     </div>
                 </div>
                 <div class="col-lg-1">
+                    <div class="row">
+                        <input type="radio" name="string-operation" id="last-index-of" onchange="Invoker()" />Last
+                        Index Of
+                    </div>
                 </div>
+		<div class="col-lg-1">
+                    <div class="row">
+                        <input type="radio" name="string-operation" id="replace-char" onchange="Invoker()" />Replace
+                        
+                    </div>
+                </div>
+                
             </div>
         </div>
+	<div class="row">
+		 <div class="container-fluid">
+                	<div class="col-lg-4">
+				<div class = "row">
+					<div class = "container-fluid">
+						<label id = "lindex1"></label>
+						<input type = "text" id="index1" value=""/>
+					</div>
+				</div>
+                	</div>
+			<div class="col-lg-4">
+				<div class = "row">
+					<div class = "container-fluid">
+						<label id = "lindex2"></label>
+						<input type = "text" id="index2" value=""/>
+					</div>
+				</div>
+                	</div>
+			<div class="col-lg-4">
+				<div class = "row">
+					<div class = "container-fluid">
+						<label id = "lindex3"></label>
+						<input type = "text" id="index3" value=""/>
+					</div>
+				</div>
+                	</div>
+			
+		</div>
+	</div>
         <div class="row">
             <div class="container-fluid">
                 <div class="col-lg-4">
