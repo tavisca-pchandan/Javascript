@@ -1,20 +1,14 @@
-var context;
 var dx= 4;
 var dy=4;
 var y=150;
 var x=10;
 function draw()
 {
-	context= Surface.getContext('2d');
-	context.clearRect(0,0,300,300);
-	context.beginPath();
-	context.fillStyle="#0000ff";
-	context.arc(x,y,20,0,Math.PI*2,true);
-	context.closePath();
-	context.fill();
-	if( x<0 || x>300)
+	var a = document.getElementById("ball");
+	a.
+	if( x<0 || x>500)
 		dx=-dx;
-	if( y<0 || y>300)
+	if( y<0 || y>500)
 		dy=-dy;
 	x+=dx;
 	y+=dy;

@@ -7,7 +7,136 @@ function disableTextBoxes()
 	document.getElementById("lindex2").innerHTML="";
 	document.getElementById("lindex3").innerHTML = "";
 	document.getElementById("result-string").innerHTML = "";
+	document.getElementById("concat").onclick = function() { 
+		var result;
+        disableTextBoxes();
+		document.getElementById("lindex1").innerHTML = "Enter string to concat ";
+		document.getElementById("index1").style.display="";
+		document.getElementById("index1").onchange=function()
+		{
+     		var str1 = document.getElementById("first-string").value;
+    		var s = new StringOperations(str1);
+			var str1 = document.getElementById("index1").value;
+			var s2 = new StringOperations(str1);
+			result = s.concat(s2.str1);
+			document.getElementById("result-string").innerHTML = result;
+  		}
+   }
+
+   document.getElementById("SubString").onclick = function(){
+   		disableTextBoxes();
+    	document.getElementById("lindex1").innerHTML = "Enter start index";
+		document.getElementById("lindex2").innerHTML = "Enter end index";
+		
+		document.getElementById("index1").style.display="";
+		document.getElementById("index2").style.display="";
+		
+		document.getElementById("index1").onchange=function()
+		{
+			var str1 = document.getElementById("first-string").value;
+	    	var s = new StringOperations(str1);
+			var start = document.getElementById("index1").value;
+			var end = document.getElementById("index2").value;
+			if(end==undefined || end==null || end=="")
+				end = s.str1.length;
+		    result = s.substring(start,end);
+			document.getElementById("result-string").innerHTML = result;
+		}
+		document.getElementById("index2").onchange=function()
+		{
+			var str1 = document.getElementById("first-string").value;
+	    	var s = new StringOperations(str1);
+			var start = document.getElementById("index1").value;
+			var end = document.getElementById("index2").value;
+			if(end==undefined || end==null || end=="")
+				end = s.str1.length;
+		   
+			result = s.substring(start,end);
+			document.getElementById("result-string").innerHTML = result;
+		}
+   }
+
+   document.getElementById("length").onclick=function(){
+   		disableTextBoxes();
+		var str1 = document.getElementById("first-string").value;
+    	var s = new StringOperations(str1);
+    	result = s.length();
+		document.getElementById("result-string").innerHTML = result;
+   }
+
+   document.getElementById("charat").onclick=function(){
+   		disableTextBoxes();
+		var str1 = document.getElementById("first-string").value;
+    	var s = new StringOperations(str1);
+		document.getElementById("lindex1").innerHTML = "Enter index";
+		document.getElementById("index1").style.display="";
+		document.getElementById("index1").onchange=function()
+		{
+				str1 = document.getElementById("index1").value;
+				result = s.charat(str1);
+				console.log(result);
+				document.getElementById("result-string").innerHTML = result;
+		}
+   }
+
+   document.getElementById("index-of").onclick=function(){
+   		disableTextBoxes();
+    	var str1 = document.getElementById("first-string").value;
+    	var s = new StringOperations(str1);
+		document.getElementById("lindex1").innerHTML = "Enter character";
+		document.getElementById("index1").style.display="";
+		document.getElementById("index1").onchange=function()
+		{
+			str1 = document.getElementById("index1").value;
+			result = s.indexof(str1);
+			document.getElementById("result-string").innerHTML = result;
+			
+		}
+   }
+
+   document.getElementById("last-index-of").onclick=function(){
+   		disableTextBoxes();
+    	var str1 = document.getElementById("first-string").value;
+    	var s = new StringOperations(str1);
+		document.getElementById("lindex1").innerHTML = "Enter character";
+		document.getElementById("index1").style.display="";
+		document.getElementById("index1").onchange=function()
+		{
+			str1 = document.getElementById("index1").value;
+			result = s.lastindexof(str1);
+			document.getElementById("result-string").innerHTML = result;
+			
+		}
+   }
+
+   document.getElementById("replace-char").onclick=function(){
+   		disableTextBoxes();
+    	var str1 = document.getElementById("first-string").value;
+    	var s = new StringOperations(str1);
+		document.getElementById("lindex1").innerHTML = "Enter character to be replaced";
+		document.getElementById("index1").style.display="";
+		document.getElementById("lindex2").innerHTML = "Enter character to replace by";
+		document.getElementById("index2").style.display="";
+		document.getElementById("index1").onchange=function()
+		{
+			str1 = document.getElementById("index1").value;
+			str2 = document.getElementById("index2").value;
+			result = s.replace(str1,str2);
+			document.getElementById("result-string").innerHTML = result;
+			
+		}
+
+		document.getElementById("index2").onchange=function()
+		{
+			str1 = document.getElementById("index1").value;
+			str2 = document.getElementById("index2").value;
+			result = s.replace(str1,str2);
+			document.getElementById("result-string").innerHTML = result;
+		}
+   }
 }
+
+
 function StringOperations(str1) {
     
     this.str1 = str1;
@@ -17,6 +146,7 @@ function StringOperations(str1) {
 	console.log("in concat " +str2);
 	this.str1 = this.str1 + str2;
 	console.log(this.str1);
+	document.getElementById("first-string").value = this.str1;
 	return this.str1;
 	}
 
@@ -25,10 +155,9 @@ function StringOperations(str1) {
 	return i;
 	}
 
-   this.substring = function substring(str1,start,end) {
-   		var status;
-    	if(str1==null || str1==undefined || str1=="")
-    		throw "Substring not specified";
+   this.substring = function substring(start,end) {
+   		var status="";
+    	
     	if(start==null || start==undefined)
     		throw "Start index not specified...!";
     	if(start<0 || end>this.str1.length)
@@ -37,24 +166,9 @@ function StringOperations(str1) {
     	{
 			
 			console.log("substring");
-			var j=0;
-			console.log(str1 + " " + start + " " + end);
+			console.log(start + " " + end);
 			for(i=start;i<end;i++)
-			{
-				console.log(this.str1[i] + "," + str1[j]);
-				if(this.str1[i]==str1[j])
-				{
-					status = "Substring found...!";
-					j++;
-					continue;
-				}
-				else if(str1[j]!=undefined)
-				{
-					status = "Substring does not found...!";
-					
-				}
-				
-			}
+				status = status + this.str1[i];
 			console.log(status);
 			return status;
 	    }	
@@ -64,6 +178,8 @@ function StringOperations(str1) {
 	this.charat = function charat(index) {
 		if(index==undefined || index==null || index=="")
 			throw "Index not specified...!";
+		else if(index<0 || index>this.str1.length)
+			return "Invalid Index";
 		else
 		return this.str1[parseInt(index)];
     }
@@ -71,6 +187,8 @@ function StringOperations(str1) {
 	this.lastindexof = function lastindexof(index) {
 		if(index==undefined || index==null || index=="")
 			throw "Index not specified...!";
+		else if(index<0 || index>this.str1.length)
+			return "Invalid Index";
 		else
 		{
 		    var j = index.length-1;
@@ -163,14 +281,14 @@ function StringOperations(str1) {
 						str_arr[i] = source[k];
 						a = a + str_arr[i];
 						k++;
-						if (k == target.length)
-						    k = 0;
+						
 						
 					}
 					else
 						a = a + str_arr[i];
 				}
-				
+				this.str1 = a;
+				document.getElementById("first-string").value = this.str1;
 				return a;
 		
 			}	
@@ -179,161 +297,7 @@ function StringOperations(str1) {
 
 }
 
-function Invoker() {
-    
-   
-    var result;
-    
-    if(document.getElementById("concat").checked)
-	{
-		disableTextBoxes();
-		document.getElementById("lindex1").innerHTML = "Enter string to concat ";
-		document.getElementById("index1").style.display="";
-		document.getElementById("index1").onchange=function()
-		{
-     		var str1 = document.getElementById("first-string").value;
-    		var s = new StringOperations(str1);
-			var str1 = document.getElementById("index1").value;
-			var s2 = new StringOperations(str1);
-			result = s.concat(s2.str1);
-			document.getElementById("result-string").innerHTML = result;
-  		}
-	}
-	else if(document.getElementById("SubString").checked)
-	{
-	    disableTextBoxes();
-    	document.getElementById("lindex1").innerHTML = "Enter start index";
-		document.getElementById("lindex2").innerHTML = "Enter end index";
-		document.getElementById("lindex3").innerHTML = "Enter the string to be searched";
-		document.getElementById("index1").style.display="";
-		document.getElementById("index2").style.display="";
-		document.getElementById("index3").style.display="";
-		document.getElementById("index1").onchange=function()
-		{
-			var str1 = document.getElementById("first-string").value;
-	    	var s = new StringOperations(str1);
-			var start = document.getElementById("index1").value;
-			var end = document.getElementById("index2").value;
-			if(end==undefined || end==null || end=="")
-				end = s.str1.length;
-		    str1 = document.getElementById("index3").value;
-			result = s.substring(str1,start,end);
-			document.getElementById("result-string").innerHTML = result;
-		}
-		document.getElementById("index2").onchange=function()
-		{
-			var str1 = document.getElementById("first-string").value;
-	    	var s = new StringOperations(str1);
-			var start = document.getElementById("index1").value;
-			var end = document.getElementById("index2").value;
-			if(end==undefined || end==null || end=="")
-				end = s.str1.length;
-		    str1 = document.getElementById("index3").value;
-			result = s.substring(str1,start,end);
-			document.getElementById("result-string").innerHTML = result;
-		}
-		document.getElementById("index3").onchange=function()
-		{
-			var str1 = document.getElementById("first-string").value;
-	    	var s = new StringOperations(str1);
-			var start = document.getElementById("index1").value;
-			var end = document.getElementById("index2").value;
-			if(end==undefined || end==null || end=="")
-				end = s.str1.length;
-		    str1 = document.getElementById("index3").value;
-			result = s.substring(str1,start,end);
-			document.getElementById("result-string").innerHTML = result;
-		}
-	}
 
-		
-		
-   	
-	else if(document.getElementById("length").checked)
-	{
-	    disableTextBoxes();
-		var str1 = document.getElementById("first-string").value;
-    	var s = new StringOperations(str1);
-    	result = s.length();
-		document.getElementById("result-string").innerHTML = result;
-   	}
-	else if(document.getElementById("charat").checked)
-	{
-	    disableTextBoxes();
-		var str1 = document.getElementById("first-string").value;
-    	var s = new StringOperations(str1);
-		document.getElementById("lindex1").innerHTML = "Enter index";
-		document.getElementById("index1").style.display="";
-		document.getElementById("index1").onchange=function()
-		{
-				str1 = document.getElementById("index1").value;
-				result = s.charat(str1);
-				console.log(result);
-				document.getElementById("result-string").innerHTML = result;
-		}
-		
-   	}
-	else if(document.getElementById("index-of").checked)
-	{
-	    disableTextBoxes();
-    	var str1 = document.getElementById("first-string").value;
-    	var s = new StringOperations(str1);
-		document.getElementById("lindex1").innerHTML = "Enter character";
-		document.getElementById("index1").style.display="";
-		document.getElementById("index1").onchange=function()
-		{
-			str1 = document.getElementById("index1").value;
-			result = s.indexof(str1);
-			document.getElementById("result-string").innerHTML = result;
-			
-		}
-   	}
-	else if(document.getElementById("last-index-of").checked)
-	{
-	    disableTextBoxes();
-    	var str1 = document.getElementById("first-string").value;
-    	var s = new StringOperations(str1);
-		document.getElementById("lindex1").innerHTML = "Enter character";
-		document.getElementById("index1").style.display="";
-		document.getElementById("index1").onchange=function()
-		{
-			str1 = document.getElementById("index1").value;
-			result = s.lastindexof(str1);
-			document.getElementById("result-string").innerHTML = result;
-			
-		}
-   	}
-       else if(document.getElementById("replace-char").checked)
-       {
-        disableTextBoxes();
-    	var str1 = document.getElementById("first-string").value;
-    	var s = new StringOperations(str1);
-		document.getElementById("lindex1").innerHTML = "Enter character to be replaced";
-		document.getElementById("index1").style.display="";
-		document.getElementById("lindex2").innerHTML = "Enter character to replace by";
-		document.getElementById("index2").style.display="";
-		document.getElementById("index1").onchange=function()
-		{
-			str1 = document.getElementById("index1").value;
-			str2 = document.getElementById("index2").value;
-			result = s.replace(str1,str2);
-			document.getElementById("result-string").innerHTML = result;
-			
-		}
-
-		document.getElementById("index2").onchange=function()
-		{
-			str1 = document.getElementById("index1").value;
-			str2 = document.getElementById("index2").value;
-			result = s.replace(str1,str2);
-			document.getElementById("result-string").innerHTML = result;
-		}
-		
-   	}
-	
-    
-   
-}
 
 
 
