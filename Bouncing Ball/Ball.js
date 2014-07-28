@@ -1,23 +1,21 @@
-var context;
 var dx= 4;
 var dy=4;
 var y=150;
 var x=10;
 function draw()
-{
-	context= Surface.getContext('2d');
-	context.clearRect(0,0,300,300);
-	context.beginPath();
-	context.fillStyle="#0000ff";
-	context.arc(x,y,20,0,Math.PI*2,true);
-	context.closePath();
-	context.fill();
-	if( x<0 || x>300)
-		dx=-dx;
-	if( y<0 || y>300)
-		dy=-dy;
+{	
+	var ball = document.getElementById("ball");
+	ball.style.position = "relative";
+	ball.style.top = y;
+	ball.style.left = x;
+	if( x<0 || x>450)
+			dx=-dx;
+	if( y<0 || y>450)
+			dy=-dy;
 	x+=dx;
 	y+=dy;
+	console.log(x);
+	console.log(y);
 }
 
 setInterval(draw,10); 
