@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Bouncing Ball</title>
+    <link href="Ball.css" rel="Stylesheet" />
+  
+</head>
+<body onload="initCanvas();">
+    <div class="surface" id="surface">
+    </div>
+    <div class="sizeDetails">
+        <label>Container Size</label>
+        <input type="button" id="small" value="Small" />
+        <input type="button" id="medium" value="Medium" />
+        <input type="button" id="large" value="Large" />
+    </div>
+    <div>
+        <input type ="button" id="addBall" value="Add Ball" />
+        <label id="Enter-Ball"></label><input type ="text" id="x-value" value="" /><input type ="text" id="y-value" value="" />
+        <label id ="Enter-Color"></label>
+        <select id="Color-Picker">
+            <option value ="Black" selected>Black</option>
+            <option value ="Pink" selected>Pink</option>
+            <option value ="White" selected>White</option>
+            <option value ="Yellow" selected>Yellow</option>
+            <option value ="Purple" selected>Purple</option>
+            <option value ="Aqua" selected>Aqua</option>
+        </select>
+        <input type ="button" id="Create-Ball" value="Create Ball" />
+        <input type ="button" id="Refresh" value="Refresh" />
+    </div>
+      <script src="Ball.js"></script>
+</body>
+</html>
